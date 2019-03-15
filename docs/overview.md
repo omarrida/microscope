@@ -19,5 +19,6 @@ To setup Microscope on your local machine, just follow these easy steps.
 
 1. Clone
 2. Install
-3. Env
-4. Serve
+3. Setup DB
+4. Env
+5. Serve
