@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\School;
 use Illuminate\Http\Request;
 use App\Http\Requests\GetSchoolListRequest;
+use App\Http\Requests\StoreSchoolRequest;
 
 class SchoolController extends Controller
 {
@@ -24,9 +25,9 @@ class SchoolController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSchoolRequest $request)
     {
-        //
+        return $request->handle()->response();
     }
 
     /**

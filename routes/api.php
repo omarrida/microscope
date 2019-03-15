@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/schools', 'SchoolController@index');
+Route::resource('/schools', 'SchoolController')->only(['index', 'store']);
 Route::get('/states', 'StateController@index');
