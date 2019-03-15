@@ -15,4 +15,9 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     protected $fillable = ['abbreviation'];
+
+    public function schools()
+    {
+        return $this->hasMany(\App\School::class);
+    }
 }

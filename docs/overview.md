@@ -22,3 +22,7 @@ To setup Microscope on your local machine, just follow these easy steps.
 3. Setup DB
 4. Env
 5. Serve
+
+## Recommendations
+
+[ ] Change the term "circulation" to "population".

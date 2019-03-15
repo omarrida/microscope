@@ -18,7 +18,7 @@ class StateTest extends TestCase
     public function test_if_a_client_can_get_a_list_of_states()
     {
         $state = factory(\App\State::class)->create(['abbreviation' => 'CO']);
-        $response = $this->get('api/states', ['Accept' => 'application/json']);
+        $response = $this->get('api/states');
 
         $response->assertStatus(200)
             ->assertJson([

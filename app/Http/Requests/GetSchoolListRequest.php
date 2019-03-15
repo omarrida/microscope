@@ -2,12 +2,12 @@
 
 namespace App\Http\Requests;
 
+use App\Http\Resources\SchoolResource;
 use Illuminate\Foundation\Http\FormRequest;
-use App\Http\Resources\StateResource;
 
-class GetStateListRequest extends FormRequest implements ApiRequest
+class GetSchoolListRequest extends FormRequest implements ApiRequest
 {
-    private $states;
+    private $schools;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -33,13 +33,13 @@ class GetStateListRequest extends FormRequest implements ApiRequest
 
     public function handle()
     {
-        $this->states = \App\State::all();
+        $this->schools = \App\School::with('state')->get();
 
         return $this;
     }
 
     public function response()
     {
-        return StateResource::collection($this->states);
+        return SchoolResource::collection($this->schools);
     }
 }
