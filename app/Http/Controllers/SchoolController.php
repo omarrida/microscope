@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\GetSchoolListRequest;
 use App\Http\Requests\StoreSchoolRequest;
 use App\Http\Requests\UpdateSchoolRequest;
+use App\Http\Requests\DestroySchoolRequest;
 
 class SchoolController extends Controller
 {
@@ -58,11 +59,12 @@ class SchoolController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param DestroySchoolRequest $request
      * @param  \App\School  $school
      * @return \Illuminate\Http\Response
      */
-    public function destroy(School $school)
+    public function destroy(DestroySchoolRequest $request, School $school)
     {
-        //
+        return $request->handle()->response();
     }
 }

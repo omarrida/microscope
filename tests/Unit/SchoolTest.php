@@ -10,6 +10,11 @@ class SchoolTest extends TestCase
 {
     use RefreshDatabase;
 
+    /**
+     * Check if we can create a school.
+     * 
+     * @return void
+     */
     public function test_if_a_client_can_create_a_new_school()
     {
         $this->withoutExceptionHandling();
@@ -75,7 +80,7 @@ class SchoolTest extends TestCase
     }
 
     /**
-     * Check if we can get a list of schools.
+     * Check if we can update a school.
      *
      * @return void
      */
@@ -101,6 +106,23 @@ class SchoolTest extends TestCase
             'zip' => '08802',
             'circulation' => 20000,
             'state_id' => $state->id
+        ]);
+    }
+
+    /**
+     * Check if we can update a school.
+     *
+     * @return void
+     */
+    public function test_if_a_client_can_delete_a_school()
+    {
+        $school = factory(\App\School::class)->create();
+
+        $response = $this->delete("/api/schools/$school->id");
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing('schools', [
+            'id' => $school->id
         ]);
     }
 }
