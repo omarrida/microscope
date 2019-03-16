@@ -15,10 +15,13 @@ class CreateSchoolProductsTable extends Migration
     {
         Schema::create('school_products', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('school_id');
-            $table->unsignedInteger('product_id');
+            $table->unsignedBigInteger('school_id');
+            $table->unsignedBigInteger('product_id');
             $table->unsignedInteger('price');
             $table->timestamps();
+
+            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

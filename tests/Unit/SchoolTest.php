@@ -73,4 +73,34 @@ class SchoolTest extends TestCase
                 ]
             ]);
     }
+
+    /**
+     * Check if we can get a list of schools.
+     *
+     * @return void
+     */
+    public function test_if_a_client_can_edit_a_school()
+    {
+        $school = factory(\App\School::class)->create();
+        $state = factory(\App\State::class)->create();
+
+        $response = $this->patch("/api/schools/$school->id", [
+            'name' => 'New name',
+            'city' => 'New City',
+            'zip' => '08802',
+            'circulation' => 20000,
+            'state_id' => $state->id
+
+        ]);
+
+        $response->assertStatus(204);
+        $this->assertDatabaseHas('schools', [
+            'id' => $school->id,
+            'name' => 'New name',
+            'city' => 'New City',
+            'zip' => '08802',
+            'circulation' => 20000,
+            'state_id' => $state->id
+        ]);
+    }
 }
