@@ -14,4 +14,9 @@ class School extends Model
     {
         return $this->belongsTo(\App\State::class);
     }
+
+    public function schoolProducts()
+    {
+        return $this->hasMany(\App\SchoolProduct::class);
+    }
 }
