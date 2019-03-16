@@ -33,7 +33,7 @@ class GetProductListRequest extends FormRequest implements ApiRequest
 
     public function handle()
     {
-        $this->products = \App\Product::paginate();
+        $this->products = \App\Product::with(['schoolProducts.school'])->paginate();
 
         return $this;
     }
