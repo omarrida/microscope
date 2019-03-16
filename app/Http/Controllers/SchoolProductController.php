@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\SchoolProduct;
 use Illuminate\Http\Request;
 use App\Http\Requests\GetSchoolProductListRequest;
+use App\Http\Requests\StoreSchoolProductRequest;
+use App\Http\Requests\UpdateSchoolProductRequest;
 
 class SchoolProductController extends Controller
 {
@@ -19,24 +21,14 @@ class SchoolProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  StoreSchoolProductRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSchoolProductRequest $request)
     {
-        //
+        return $request->handle()->response();
     }
 
     /**
@@ -51,26 +43,15 @@ class SchoolProductController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\SchoolProduct  $schoolProduct
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SchoolProduct $schoolProduct)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  UpdateSchoolProductRequest  $request
      * @param  \App\SchoolProduct  $schoolProduct
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SchoolProduct $schoolProduct)
+    public function update(UpdateSchoolProductRequest $request)
     {
-        //
+        return $request->handle()->response();
     }
 
     /**

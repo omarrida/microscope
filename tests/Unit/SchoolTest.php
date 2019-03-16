@@ -17,7 +17,6 @@ class SchoolTest extends TestCase
      */
     public function test_if_a_client_can_create_a_new_school()
     {
-        $this->withoutExceptionHandling();
         $state = factory(\App\State::class)->create();
 
         $school = factory(\App\School::class)->make([

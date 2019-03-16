@@ -22,6 +22,7 @@ class CreateSchoolProductsTable extends Migration
 
             $table->foreign('school_id')->references('id')->on('schools');
             $table->foreign('product_id')->references('id')->on('products');
+            $table->unique(['school_id', 'product_id']);
         });
     }
 
