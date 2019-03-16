@@ -42,7 +42,7 @@ class SchoolProductTest extends TestCase
     }
 
     /**
-     * Test getting a list of schools with nested products.
+     * Test getting a list of products for a specific school.
      *
      * @return void
      */

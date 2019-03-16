@@ -33,7 +33,7 @@ class GetStateListRequest extends FormRequest implements ApiRequest
 
     public function handle()
     {
-        $this->states = \App\State::all();
+        $this->states = \App\State::paginate();
 
         return $this;
     }
