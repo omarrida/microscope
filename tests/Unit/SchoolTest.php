@@ -79,6 +79,36 @@ class SchoolTest extends TestCase
     }
 
     /**
+     * Check if we can get a list of schools.
+     *
+     * @return void
+     */
+    public function test_if_a_client_can_filter_schools_by_name()
+    {
+        $school = factory(\App\School::class)->create(['name' => 'University of Colorado Boulder']);
+        factory(\App\School::class)->create(['name' => 'UC Berkeley']);
+
+        $response = $this->get('/api/schools?name=Boulder');
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    [
+                        'id' => $school->id,
+                        'name' => $school->name,
+                        'city' => $school->city,
+                        'zip' => $school->zip,
+                        'circulation' => $school->circulation,
+                        'state' => [
+                            'id' => $school->state->id,
+                            'abbreviation' => $school->state->abbreviation
+                        ],
+                    ]
+                ]
+            ])->assertJsonCount(1, 'data');
+    }
+
+    /**
      * Check if we can update a school.
      *
      * @return void

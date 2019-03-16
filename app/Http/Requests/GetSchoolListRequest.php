@@ -33,7 +33,13 @@ class GetSchoolListRequest extends FormRequest implements ApiRequest
 
     public function handle()
     {
-        $this->schools = \App\School::with('state', 'schoolProducts.product')->paginate();
+        $this->schools = \App\School::with('state', 'schoolProducts.product');
+
+        if ($this->has('name')) {
+            $this->schools = $this->schools->where('name', 'like', '%'.$this->input('name').'%');
+        }
+
+        $this->schools = $this->schools->paginate();
 
         return $this;
     }
