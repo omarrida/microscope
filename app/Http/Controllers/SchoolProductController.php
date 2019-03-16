@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\SchoolProduct;
 use Illuminate\Http\Request;
+use App\Http\Requests\GetSchoolProductListRequest;
 
 class SchoolProductController extends Controller
 {
@@ -12,9 +13,9 @@ class SchoolProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(GetSchoolProductListRequest $request)
     {
-        //
+        return $request->handle()->response();
     }
 
     /**

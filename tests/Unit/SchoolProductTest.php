@@ -40,4 +40,30 @@ class SchoolProductTest extends TestCase
                 ]
             ]);
     }
+
+    /**
+     * Test getting a list of schools with nested products.
+     *
+     * @return void
+     */
+    public function test_if_a_client_can_get_a_list_of_products_for_a_specific_school()
+    {
+        $schoolProduct = factory(\App\SchoolProduct::class)->create();
+
+        $response = $this->get("/api/schools/$schoolProduct->school_id/products", ['Accept' => 'application/json']);
+
+        $response->assertStatus(200)
+            ->assertJson([
+                'data' => [
+                    [
+                       'id' => $schoolProduct->id,
+                       'product' => [
+                           'id' => $schoolProduct->product->id,
+                           'name' => $schoolProduct->product->name,
+                       ],
+                       'price' => $schoolProduct->price
+                    ]
+                ]
+            ]);
+    }
 }
