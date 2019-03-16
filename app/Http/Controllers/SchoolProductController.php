@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\GetSchoolProductListRequest;
 use App\Http\Requests\StoreSchoolProductRequest;
 use App\Http\Requests\UpdateSchoolProductRequest;
+use App\Http\Requests\DestroySchoolProductRequest;
 
 class SchoolProductController extends Controller
 {
@@ -46,7 +47,6 @@ class SchoolProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  UpdateSchoolProductRequest  $request
-     * @param  \App\SchoolProduct  $schoolProduct
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateSchoolProductRequest $request)
@@ -57,11 +57,11 @@ class SchoolProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SchoolProduct  $schoolProduct
+     * @param  DestroySchoolProductRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SchoolProduct $schoolProduct)
+    public function destroy(DestroySchoolProductRequest $request)
     {
-        //
+        return $request->handle()->response();
     }
 }

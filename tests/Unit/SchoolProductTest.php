@@ -104,8 +104,6 @@ class SchoolProductTest extends TestCase
      */
     public function test_if_a_client_can_update_a_school_product()
     {
-        $this->withoutExceptionHandling();
-        
         $schoolProduct = factory(\App\SchoolProduct::class)->create();
         $product = factory(\App\Product::class)->create();
         $response = $this->patch("api/schools/$schoolProduct->school_id/schoolProducts/$schoolProduct->id", [
@@ -121,6 +119,24 @@ class SchoolProductTest extends TestCase
             'school_id' => $schoolProduct->school_id,
             'product_id' => $schoolProduct->product_id,
             'price' => $schoolProduct->price
+        ]);
+    }
+
+    /**
+     * Test deleting a SchoolProduct.
+     *
+     * @return void
+     */
+    public function test_if_a_client_can_destroy_a_school_product()
+    {
+        $this->withoutExceptionHandling();
+        $schoolProduct = factory(\App\SchoolProduct::class)->create();
+
+        $response = $this->delete("api/schools/$schoolProduct->school_id/schoolProducts/$schoolProduct->id");
+
+        $response->assertStatus(204);
+        $this->assertDatabaseMissing('school_products', [
+            'id' => $schoolProduct->id,
         ]);
     }
 }
