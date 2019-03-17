@@ -11,10 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        try {
-            factory(\App\SchoolProduct::class, 10)->create();
-        } catch(\Exception $e) {
-            //
-        }
+        factory(\App\SchoolProduct::class, 100)->create();
     }
 }

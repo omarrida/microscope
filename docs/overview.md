@@ -9,7 +9,7 @@ Microscope is an internal Laravel API service that allows you to:
 
 ## API Docs
 
-Microscope's API is documented (with examples) on Postman, so [check them out](https://example.com).
+Microscope's API is documented (with examples) on Postman, so [check them out](https://documenter.getpostman.com/view/1971267/S17nVB2Y).
 
 ## Setup Guide
 
@@ -17,12 +17,18 @@ To setup Microscope on your local machine, just follow these easy steps.
 
 > Note that this guide assumes your machine satisfies the requirements for Laravel 5.8 and Valet. If not, you'll need to checkout https://laravel.com/docs/5.8 or email me at omarrida94@gmail.com for help :)
 
-1. Clone
-2. Install
-3. Setup DB
-4. Env
-5. Serve
+1. Clone the repository
+2. Run composer install
+3. Add a MySQL connection to your .env file
+4. Run the migrations and seed
 
-## Recommendations
+## TODO
 
 [ ] Change the term "circulation" to "population".
+[ ] Create a seeder that inserts all the states.
+[ ] Refactor cities into a new model.
+[ ] Integrate the [Spatie Query Builder](https://github.com/spatie/laravel-query-builder) for easy filters/sorting.
+[ ] Write tests for CSV export and getting products by value.
+[ ] Refactor SchoolProduct => Product and Product => ProductType.
+[ ] Write a listener to check for edits to product price and school circulation, and update the calculated value accordingly.
+[ ] Agree with internal team on auth strategy.
