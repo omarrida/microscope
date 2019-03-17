@@ -3,11 +3,12 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\SchoolProduct;
 use App\Http\Resources\SchoolProductResource;
 
-class StoreSchoolProductRequest extends FormRequest
+class GetSchoolProductsByValueRequest extends FormRequest implements ApiRequest
 {
-    private $schoolProduct;
+    private $schoolProducts;
 
     /**
      * Determine if the user is authorized to make this request.
@@ -27,26 +28,19 @@ class StoreSchoolProductRequest extends FormRequest
     public function rules()
     {
         return [
-            'product_id' => 'required|integer|exists:products,id',
-            'price' => 'required|integer|min:0'
+            //
         ];
     }
 
     public function handle()
     {
-        $this->schoolProduct = $this->school->schoolProducts()->create([
-            'product_id' => $this->product_id,
-            'price' => $this->price,
-            'value' => 50
-        ]);
-
-        $this->schoolProduct = $this->schoolProduct->query()->with('product')->first();
+        $this->schoolProducts = SchoolProduct::orderBy('value', 'desc')->paginate();
 
         return $this;
     }
 
     public function response()
     {
-        return SchoolProductResource::make($this->schoolProduct)->response()->setStatusCode(201);
+        return SchoolProductResource::collection($this->schoolProducts);
     }
 }

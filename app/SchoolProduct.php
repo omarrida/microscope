@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SchoolProduct extends Model
 {
     protected $fillable = [
-        'school_id', 'product_id', 'price'
+        'school_id', 'product_id', 'price', 'value'
     ];
 
     public function school()
@@ -18,5 +18,10 @@ class SchoolProduct extends Model
     public function product()
     {
         return $this->belongsTo(\App\Product::class);
+    }
+
+    public function getValueAttribute()
+    {
+        return $this->price / $this->school->circulation;
     }
 }

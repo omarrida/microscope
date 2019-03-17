@@ -4,6 +4,8 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Http\Resources\ProductResource;
+use Spatie\QueryBuilder\QueryBuilder;
+use Illuminate\Support\Facades\DB;
 
 class GetProductListRequest extends FormRequest implements ApiRequest
 {
@@ -46,6 +48,6 @@ class GetProductListRequest extends FormRequest implements ApiRequest
 
     public function response()
     {
-        return ProductResource::collection($this->products);
+        return ProductResource::make($this->products);
     }
 }

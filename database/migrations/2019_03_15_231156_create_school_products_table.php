@@ -18,6 +18,7 @@ class CreateSchoolProductsTable extends Migration
             $table->unsignedBigInteger('school_id');
             $table->unsignedBigInteger('product_id');
             $table->unsignedInteger('price');
+            $table->unsignedInteger('value');
             $table->timestamps();
 
             $table->foreign('school_id')->references('id')->on('schools');
