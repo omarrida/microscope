@@ -24,11 +24,11 @@ To setup Microscope on your local machine, just follow these easy steps.
 
 ## TODO
 
-[ ] Change the term "circulation" to "population".
-[ ] Create a seeder that inserts all the states.
-[ ] Refactor cities into a new model.
-[ ] Integrate the [Spatie Query Builder](https://github.com/spatie/laravel-query-builder) for easy filters/sorting.
-[ ] Write tests for CSV export and getting products by value.
-[ ] Refactor SchoolProduct => Product and Product => ProductType.
-[ ] Write a listener to check for edits to product price and school circulation, and update the calculated value accordingly.
-[ ] Agree with internal team on auth strategy.
+* [ ] Change the term "circulation" to "population".
+* [ ] Create a seeder that inserts all the states.
+* [ ] Refactor cities into a new model.
+* [ ] Integrate the [Spatie Query Builder](https://github.com/spatie/laravel-query-builder) for easy filters/sorting.
+* [ ] Write tests for CSV export and getting products by value.
+* [ ] Refactor SchoolProduct => Product and Product => ProductType.
+* [ ] Write a listener to check for edits to product price and school circulation, and update the calculated value accordingly.
+* [ ] Agree with internal team on auth strategy.
