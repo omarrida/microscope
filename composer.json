@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-query-builder": "^1.17"
+        "spatie/laravel-query-builder": "^1.17",
+        "usmanhalalit/laracsv": "1.*@dev"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.6",
